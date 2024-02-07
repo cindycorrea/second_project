@@ -1,0 +1,18 @@
+###
+GET http://localhost:3000/test
+
+
+###
+GET http://localhost:3000/test/65c3c3075e20ec19e6b4de61
+
+###
+POST http://localhost:3000/test
+content-type: application/json
+
+{
+    "firstName": "Mario",
+    "lastName": "Correa",
+    "email": "marioC@gmail.com",
+    "favoriteColor": "Blue",
+    "birthday": "February 17, 1981"
+}
