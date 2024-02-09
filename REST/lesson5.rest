@@ -1,6 +1,7 @@
+// Test for getting Builder Data
+
 ###
 GET http://localhost:3000/builders
-
 
 ###
 GET http://localhost:3000/builders/65c52b291aba6758e4b0aa5a
@@ -18,6 +19,27 @@ content-type: application/json
   "wishList": [10300, 42096]
 }
 
+###
+GET https://lastclassprojecttwo.onrender.com/builders
+
+###
+GET https://lastclassprojecttwo.onrender.com/builders/65c52b291aba6758e4b0aa5a
+
+###
+POST https://lastclassprojecttwo.onrender.com/builders
+content-type: application/json
+
+{
+  "firstName": "Mario",
+  "lastName": "Correa",
+  "email": "marioC@gmail.com",
+  "favoriteTheme": "Technic",
+  "setsOwned": [42162, 42141, 75572, 60367],
+  "wishList": [10300, 42096]
+}
+
+
+// Tests for getting Set Data
 
 ###
 GET http://localhost:3000/setdata
@@ -27,6 +49,27 @@ GET http://localhost:3000/setdata/65c66a7d6a4c7a6e913a44f4
 
 ###
 POST http://localhost:3000/setdata
+content-type: application/json
+
+  {
+      "setNumber": 10305,
+      "setName": "Lion Knights' Castle",
+      "theme": "LEGO Icons",
+      "pieces": 4514,
+      "ages": "18+",
+      "price": 399.99,
+      "availability": "Will ship in 60 days",
+      "image": "https://www.lego.com/cdn/cs/set/assets/blt0254ea3dce736ea0/10305.png?format=webply&fit=bounds&quality=75&width=800&height=800&dpr=1"
+  }
+
+###
+GET https://lastclassprojecttwo.onrender.com/setdata
+
+###
+GET https://lastclassprojecttwo.onrender.com/setdata/65c6741a87b3941e1d7864bd
+
+###
+POST https://lastclassprojecttwo.onrender.com/setdata
 content-type: application/json
 
   {
