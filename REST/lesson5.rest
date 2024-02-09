@@ -1,18 +1,19 @@
 ###
-GET http://localhost:3000/test
+GET http://localhost:3000/builders
 
 
 ###
-GET http://localhost:3000/test/65c3c3075e20ec19e6b4de61
+GET http://localhost:3000/builders/65c52b291aba6758e4b0aa5a
 
 ###
-POST http://localhost:3000/test
+POST http://localhost:3000/builders
 content-type: application/json
 
 {
-    "firstName": "Mario",
-    "lastName": "Correa",
-    "email": "marioC@gmail.com",
-    "favoriteColor": "Blue",
-    "birthday": "February 17, 1981"
-}
+        "firstName": "Mario",
+        "lastName": "Correa",
+        "email": "marioC@gmail.com",
+        "favoriteTheme": "Technic",
+        "setsOwned": [42162, 42141, 75572, 60367],
+        "wishList": [10300, 42096]
+      }

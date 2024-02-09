@@ -8,13 +8,13 @@ const test = async (request, response) => {
   response.json("I actually know what I am doing.");
 };
 
-const getCindy = async (request, response) => {
+const getBuilder = async (request, response) => {
   const client = await mongoDB.connectDB();
 
   try {
     const userID = new ObjectId(request.params.id);
 
-    const collection = client.db("second_project").collection("whatever");
+    const collection = client.db("second_project").collection("builders");
 
     const result = collection.find({ _id: userID });
 
@@ -23,27 +23,28 @@ const getCindy = async (request, response) => {
     response.json(resultArray);
   } catch (error) {
     console.error("Error:", error);
-    response.status(500).json({ error: "Cannot fetch Cindy" });
+    response.status(500).json({ error: "Cannot fetch the builder" });
   } finally {
     await client.close();
   }
 };
 
-const postMario = async (request, response) => {
+const newBuilder = async (request, response) => {
   const client = await mongoDB.connectDB();
 
   const mario = {
     firstName: request.body.firstName,
     lastName: request.body.lastName,
     email: request.body.email,
-    favoriteColor: request.body.favoriteColor,
-    birthday: request.body.birthday,
+    favoriteTheme: request.body.favoriteTheme,
+    setsOwned: request.body.setsOwned,
+    wishList: request.body.wishList
   };
 
   try {
     console.log("Received Mario data:", mario);
 
-    const collection = client.db("second_project").collection("whatever");
+    const collection = client.db("second_project").collection("builders");
 
     const result = await collection.insertOne(mario);
 
@@ -57,4 +58,4 @@ const postMario = async (request, response) => {
   }
 };
 
-module.exports = { test, getCindy, postMario };
+module.exports = { test, getBuilder, newBuilder };

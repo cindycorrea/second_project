@@ -1,0 +1,58 @@
+[
+    {
+        "firstName": "Cindy",
+        "lastName": "Correa",
+        "email": "cindyC@gmail.com",
+        "favoriteTheme": "Harry Potter",
+        "setsOwned": [76417, 76419, 75379, 10300],
+        "wishList": [21034, 10281, 10309]
+      },
+      {
+        "firstName": "Mario",
+        "lastName": "Correa",
+        "email": "marioC@gmail.com",
+        "favoriteTheme": "Technic",
+        "setsOwned": [42162, 42141, 75572, 60367],
+        "wishList": [10300, 42096]
+      },
+      {
+        "firstName": "Hannah",
+        "lastName": "Correa",
+        "email": "hannahC@gmail.com",
+        "favoriteTheme": "Lord of the Rings",
+        "setsOwned": [10316, 31154],
+        "wishList": [21345]
+      },
+      {
+        "firstName": "Chloe",
+        "lastName": "Correa",
+        "email": "chloeC@gmail.com",
+        "favoriteTheme": "The Botanical Collection",
+        "setsOwned": [10329, 10309, 75379],
+        "wishList": [75379]
+      },
+      {
+        "firstName": "Blake",
+        "lastName": "Wolters",
+        "email": "blakeW@gmail.com",
+        "favoriteTheme": "Ideas",
+        "setsOwned": [21345, 21338],
+        "wishList": [76417, 76429]
+      },
+      {
+        "firstName": "Tyson",
+        "lastName": "Wolters",
+        "email": "tysonW@gmail.com",
+        "favoriteTheme": "Star Wars",
+        "setsOwned": [75379, 75304],
+        "wishList": [75304]
+      },
+      {
+        "firstName": "Jacob",
+        "lastName": "Wolters",
+        "email": "jacobW@gmail.com",
+        "favoriteTheme": "NINJAGO",
+        "setsOwned": [71795, 60367, 76964],
+        "wishList": [21338]
+      }
+]
