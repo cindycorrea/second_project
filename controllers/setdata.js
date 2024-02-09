@@ -51,8 +51,6 @@ const newSet = async (request, response) => {
   };
 
   try {
-    console.log("Received Mario data:", newSet);
-
     const collection = client.db("second_project").collection("setdata");
 
     const result = await collection.insertOne(newSet);

@@ -48,8 +48,6 @@ const newBuilder = async (request, response) => {
   };
 
   try {
-    console.log("Received Mario data:", newBuilder);
-
     const collection = client.db("second_project").collection("builders");
 
     const result = await collection.insertOne(newBuilder);
