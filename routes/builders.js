@@ -1,9 +1,11 @@
 const router = require('express').Router();
 
-const testFunctions = require('../controllers/builders');
+const buildersController = require('../controllers/builders');
 
-router.get('/builders', testFunctions.test);
-router.get('/builders/:id', testFunctions.getBuilder);
-router.post('/builders', testFunctions.newBuilder);
+router.get('/builders', buildersController.test);
+router.get('/builders/:id', buildersController.getBuilder);
+router.post('/builders', buildersController.newBuilder);
+router.put('/builders', buildersController.updateBuilder);
+router.delete('/builders', buildersController.deleteBuilder);
 
 module.exports = router;
