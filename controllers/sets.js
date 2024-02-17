@@ -11,9 +11,9 @@ const getSet = async (request, response) => {
   /*
     #swagger.description = Pull a lego set 
   */
-  const userID = request.params.id;
+  const setID = request.params.id;
   try {
-    const result = await Set.findById(userID);
+    const result = await Set.findById(setID);
 
     response.json(result);
   } catch (error) {
@@ -53,7 +53,7 @@ const updateSet = async (request, response) => {
   /*
     #swagger.description = Update a lego set data
   */
-  const userID = request.params.id;
+  const setID = request.params.id;
 
   const update = {
     $set: {
@@ -69,12 +69,27 @@ const updateSet = async (request, response) => {
   };
 
   try {
-    const filter = { _id: userID };
+    const filter = { _id: setID };
 
-    const result = await Set.findOneAndUpdate(filter, update);
+    const result = await Set.findOneAndUpdate(filter, update, {
+      runValidators: true,
+    });
+
+    if (!result) {
+      // If result is null, document with given setID does not exist
+      return response.status(404).json("Set not found.");
+    }
+
     response.status(204);
   } catch (error) {
     console.error("Here is the error: ", error);
+
+    // Check if error is a Mongoose validation error
+    if (error.name === "ValidationError" || "CastError") {
+      // Handle validation error separately
+      return response.status(400).json(error.message); // Respond with 400 Bad Request
+    }
+
     response.status(500).json("Could not update the set.");
   }
 };
@@ -83,10 +98,15 @@ const deleteSet = async (request, response) => {
   /*
     #swagger.description = Delete a lego set data
   */
-  const userID = request.params.id;
+  const setID = request.params.id;
 
   try {
-    const result = await Set.findByIdAndDelete(userID);
+    const result = await Set.findByIdAndDelete(setID);
+
+    if (!result) {
+      // If result is null, document with given setID does not exist
+      return response.status(404).json("Set not found.");
+    }
 
     console.log(`Set ${result._id} successfully deleted.`);
     response.status(200).json(`Set ${result._id} successfully deleted.`);

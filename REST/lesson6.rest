@@ -1,13 +1,13 @@
 // Local Host PUT and DELETE for Builders
 
 ###
-PUT http://localhost:3000/builders/:id
+PUT http://localhost:3000/builders/65d12a5dfef16c7100250144
 content-type: application/json
 
 {
   "firstName": "Mario",
   "lastName": "Correa",
-  "email": "correa_mario@gmail.com",
+  "email": "mario@gmail.com",
   "favoriteTheme": "Technic",
   "setsOwned": [42162, 42141, 75572, 60367],
   "wishList": [10300, 42096]

@@ -71,20 +71,26 @@ const updateBuilder = async (request, response) => {
       },
     };
 
-    const result = await Builder.findOneAndUpdate(filter, update);
+    const result = await Builder.findOneAndUpdate(filter, update, {
+      runValidators: true,
+    });
+
+    if (!result) {
+      // If result is null, document with given userID does not exist
+      return response.status(404).json("Builder not found.");
+    }
+
     response.status(204);
   } catch (error) {
-    console.error(error);
-    response
-      .status(500)
-      .json({
-        error: "Could not update builder",
-        message:
-          "An error occurred while attempting to update the builder information.",
-        code: "UPDATE_FAILED",
-        timestamp: "2024-02-16T12:00:00Z",
-        status: 500,
-      });
+    console.error("Here is the error: ", error);
+
+    // Check if error is a Mongoose validation error
+    if (error.name === "ValidationError" || "CastError") {
+      // Handle validation error separately
+      return response.status(400).json(error.message); // Respond with 400 Bad Request
+    }
+
+    response.status(500).json("Could not update the builder.");
   }
 };
 
@@ -98,6 +104,12 @@ const deleteBuilder = async (request, response) => {
   try {
     // Find the document and delete it
     const result = await Builder.findByIdAndDelete(userId);
+
+    if (!result) {
+      // If result is null, document with given userID does not exist
+      return response.status(404).json("Builder not found.");
+    }
+
     console.log(`Builder ${result.firstName} has been deleted.`);
     response.status(200).json(`Builder ${result.firstName} has been deleted.`);
   } catch (error) {
