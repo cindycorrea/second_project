@@ -8,7 +8,8 @@
   "host": "lastclassprojecttwo.onrender.com",
   "basePath": "/",
   "schemes": [
-    "https"
+    "https",
+    "http"
   ],
   "paths": {
     "/builders": {
@@ -59,22 +60,6 @@
             "description": "Internal Server Error"
           }
         }
-      },
-      "put": {
-        "description": "Update a builder",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      },
-      "delete": {
-        "description": "Delete a builder",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
       }
     },
     "/builders/{id}": {
@@ -96,9 +81,74 @@
             "description": "Internal Server Error"
           }
         }
+      },
+      "put": {
+        "description": "Update a builder",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "example": "any"
+                },
+                "lastName": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "favoriteTheme": {
+                  "example": "any"
+                },
+                "setsOwned": {
+                  "example": "any"
+                },
+                "wishList": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "description": "Delete a builder",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
       }
     },
-    "/setdata": {
+    "/sets": {
       "get": {
         "description": "",
         "responses": {
@@ -152,27 +202,82 @@
             "description": "Internal Server Error"
           }
         }
+      }
+    },
+    "/sets/{id}": {
+      "get": {
+        "description": "Pull a lego set",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
       },
       "put": {
         "description": "Update a lego set data",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "setNumber": {
+                  "example": "any"
+                },
+                "setaName": {
+                  "example": "any"
+                },
+                "theme": {
+                  "example": "any"
+                },
+                "pieces": {
+                  "example": "any"
+                },
+                "ages": {
+                  "example": "any"
+                },
+                "price": {
+                  "example": "any"
+                },
+                "availability": {
+                  "example": "any"
+                },
+                "image": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
-          "default": {
-            "description": ""
+          "204": {
+            "description": "No Content"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
       "delete": {
         "description": "Delete a lego set data",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
-    "/setdata/{id}": {
-      "get": {
-        "description": "Pull a lego set",
         "parameters": [
           {
             "name": "id",

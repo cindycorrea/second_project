@@ -1,0 +1,80 @@
+// Local Host PUT and DELETE for Builders
+
+###
+PUT http://localhost:3000/builders/:id
+content-type: application/json
+
+{
+  "firstName": "Mario",
+  "lastName": "Correa",
+  "email": "correa_mario@gmail.com",
+  "favoriteTheme": "Technic",
+  "setsOwned": [42162, 42141, 75572, 60367],
+  "wishList": [10300, 42096]
+}
+
+###
+DELETE http://localhost:3000/builders/:id
+
+
+// Local Host PUT and DELETE for Sets
+
+###
+PUT http://localhost:3000/sets/:id
+content-type: application/json
+
+{
+    "setNumber": 10305,
+    "setName": "Lion Knights' Castle",
+    "theme": "LEGO Icons",
+    "pieces": 4514,
+    "ages": "18+",
+    "price": 399.99,
+    "availability": "Available now",
+    "image": "https://www.lego.com/cdn/cs/set/assets/blt0254ea3dce736ea0/10305.png?format=webply&fit=bounds&quality=75&width=800&height=800&dpr=1"
+}
+
+###
+DELETE http://localhost:3000/sets/:id
+
+
+// Render PUT and DELETE for Builders
+
+###
+PUT https://lastclassprojecttwo.onrender.com/builders/:id
+content-type: application/json
+
+{
+    "setNumber": 10305,
+    "setName": "Lion Knights' Castle",
+    "theme": "LEGO Icons",
+    "pieces": 4514,
+    "ages": "18+",
+    "price": 399.99,
+    "availability": "Available now",
+    "image": "https://www.lego.com/cdn/cs/set/assets/blt0254ea3dce736ea0/10305.png?format=webply&fit=bounds&quality=75&width=800&height=800&dpr=1"
+}
+
+###
+DELETE https://lastclassprojecttwo.onrender.com/builders/:id
+
+
+// Render PUT and DELETE for Sets
+
+###
+PUT https://lastclassprojecttwo.onrender.com/sets/:id
+content-type: application/json
+
+{
+    "setNumber": 10305,
+    "setName": "Lion Knights' Castle",
+    "theme": "LEGO Icons",
+    "pieces": 4514,
+    "ages": "18+",
+    "price": 399.99,
+    "availability": "Available now",
+    "image": "https://www.lego.com/cdn/cs/set/assets/blt0254ea3dce736ea0/10305.png?format=webply&fit=bounds&quality=75&width=800&height=800&dpr=1"
+}
+
+###
+DELETE https://lastclassprojecttwo.onrender.com/sets/:id

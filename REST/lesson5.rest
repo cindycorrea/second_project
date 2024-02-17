@@ -1,10 +1,10 @@
-// Test for getting Builder Data
+// Local host GET, GET/:id, POST for Builders
 
 ###
 GET http://localhost:3000/builders
 
 ###
-GET http://localhost:3000/builders/65c52b291aba6758e4b0aa5a
+GET http://localhost:3000/builders/:id
 
 ###
 POST http://localhost:3000/builders
@@ -19,11 +19,13 @@ content-type: application/json
   "wishList": [10300, 42096]
 }
 
+// Render GET, GET/:id, POST for Builders
+
 ###
 GET https://lastclassprojecttwo.onrender.com/builders
 
 ###
-GET https://lastclassprojecttwo.onrender.com/builders/65c52b291aba6758e4b0aa5a
+GET https://lastclassprojecttwo.onrender.com/builders/:id
 
 ###
 POST https://lastclassprojecttwo.onrender.com/builders
@@ -38,17 +40,16 @@ content-type: application/json
   "wishList": [10300, 42096]
 }
 
-
-// Tests for getting Set Data
-
-###
-GET http://localhost:3000/setdata
+// Local host GET, GET/:id, POST for Sets
 
 ###
-GET http://localhost:3000/setdata/65c66a7d6a4c7a6e913a44f4
+GET http://localhost:3000/sets
 
 ###
-POST http://localhost:3000/setdata
+GET http://localhost:3000/sets/:id
+
+###
+POST http://localhost:3000/sets
 content-type: application/json
 
   {
@@ -62,14 +63,16 @@ content-type: application/json
       "image": "https://www.lego.com/cdn/cs/set/assets/blt0254ea3dce736ea0/10305.png?format=webply&fit=bounds&quality=75&width=800&height=800&dpr=1"
   }
 
-###
-GET https://lastclassprojecttwo.onrender.com/setdata
+// Render GET, GET/:id, POST for Sets
 
 ###
-GET https://lastclassprojecttwo.onrender.com/setdata/65c6741a87b3941e1d7864bd
+GET https://lastclassprojecttwo.onrender.com/sets
 
 ###
-POST https://lastclassprojecttwo.onrender.com/setdata
+GET https://lastclassprojecttwo.onrender.com/sets/:id
+
+###
+POST https://lastclassprojecttwo.onrender.com/sets
 content-type: application/json
 
   {

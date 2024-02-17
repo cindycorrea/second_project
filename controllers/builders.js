@@ -1,34 +1,26 @@
-const { request, response } = require("express");
-const mongoDB = require("../mongoDB/connection");
-const ObjectId = require("mongodb").ObjectId;
+const mongoose = require("mongoose");
+const mongoBD = require("../mongoDB/connection");
+const Builder = require("../mongoose/builder");
 
-const test = async (request, response) => {
-  const client = await mongoDB.connectDB();
-  console.log("It is working.");
-  response.json("I actually know what I am doing.");
+const getAllBuilders = async (request, response) => {
+  const builders = await Builder.find();
+  response.json(builders);
 };
 
 const getBuilder = async (request, response) => {
   /*
     #swagger.description = Pull a builder
   */
-  const client = await mongoDB.connectDB();
+
+  const userID = request.params.id;
 
   try {
-    const userID = new ObjectId(request.params.id);
+    const builder = await Builder.findById(userID);
 
-    const collection = client.db("second_project").collection("builders");
-
-    const result = collection.find({ _id: userID });
-
-    const resultArray = await result.toArray();
-
-    response.json(resultArray);
+    response.json(builder);
   } catch (error) {
     console.error("Error:", error);
     response.status(500).json({ error: "Cannot fetch the builder" });
-  } finally {
-    await client.close();
   }
 };
 
@@ -36,44 +28,88 @@ const newBuilder = async (request, response) => {
   /*
     #swagger.description = Create a new builder
   */
-  const client = await mongoDB.connectDB();
 
-  const newBuilder = {
+  const newBuilder = new Builder({
     firstName: request.body.firstName,
     lastName: request.body.lastName,
     email: request.body.email,
     favoriteTheme: request.body.favoriteTheme,
     setsOwned: request.body.setsOwned,
     wishList: request.body.wishList,
-  };
+  });
 
   try {
-    const collection = client.db("second_project").collection("builders");
+    const result = await newBuilder.save();
 
-    const result = await collection.insertOne(newBuilder);
-
-    console.log(`Inserted with an id of ${result.insertedId}`);
-    response.status(201).json(result.insertedId);
+    console.log(`Inserted with an id of ${result._id}`);
+    response.status(201).json(result._id);
   } catch (error) {
     console.error("Error: ", error);
     response.status(500).json({ error: "Did not insert builder" });
-  } finally {
-    client.close();
   }
 };
 
-const updateBuilder = (request, response) => {
+const updateBuilder = async (request, response) => {
   /*
     #swagger.description = Update a builder
   */
-  console.log("This function will update.");
+  try {
+    // Process the id from the request
+    const userID = request.params.id;
+
+    // Create a filter
+    const filter = { _id: userID };
+
+    const update = {
+      $set: {
+        firstName: request.body.firstName,
+        lastName: request.body.lastName,
+        email: request.body.email,
+        favoriteTheme: request.body.favoriteTheme,
+        setsOwned: request.body.setsOwned,
+        wishList: request.body.wishList,
+      },
+    };
+
+    const result = await Builder.findOneAndUpdate(filter, update);
+    response.status(204);
+  } catch (error) {
+    console.error(error);
+    response
+      .status(500)
+      .json({
+        error: "Could not update builder",
+        message:
+          "An error occurred while attempting to update the builder information.",
+        code: "UPDATE_FAILED",
+        timestamp: "2024-02-16T12:00:00Z",
+        status: 500,
+      });
+  }
 };
 
-const deleteBuilder = (request, response) => {
+const deleteBuilder = async (request, response) => {
   /*
     #swagger.description = Delete a builder
   */
-  console.log("This function will delete.");
+  // Get the user id from the request
+  const userId = request.params.id;
+
+  try {
+    // Find the document and delete it
+    const result = await Builder.findByIdAndDelete(userId);
+    console.log(`Builder ${result.firstName} has been deleted.`);
+    response.status(200).json(`Builder ${result.firstName} has been deleted.`);
+  } catch (error) {
+    console.error("Error: ", error);
+    response.status(500).json({ error: "Internal Server Error" });
+  }
 };
 
-module.exports = { test, getBuilder, newBuilder, updateBuilder, deleteBuilder };
+module.exports = {
+  getAllBuilders,
+  getBuilder,
+  newBuilder,
+  updateBuilder,
+  deleteBuilder,
+};

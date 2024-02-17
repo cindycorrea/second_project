@@ -12,7 +12,7 @@ const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 app.use("/", require("./routes/builders"));
-app.use("/", require("./routes/setdata"));
+app.use("/", require("./routes/sets"));
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.listen(port, () => {
