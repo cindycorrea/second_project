@@ -1,7 +1,7 @@
 // Local Host PUT and DELETE for Builders
 
 ###
-PUT http://localhost:3000/builders/65d12a5dfef16c7100250144
+PUT http://localhost:3000/builders/65d1316cd2b82462c5865cd8
 content-type: application/json
 
 {
@@ -14,13 +14,13 @@ content-type: application/json
 }
 
 ###
-DELETE http://localhost:3000/builders/:id
+DELETE http://localhost:3000/builders/65d1316cd2b82462c5865cd8
 
 
 // Local Host PUT and DELETE for Sets
 
 ###
-PUT http://localhost:3000/sets/:id
+PUT http://localhost:3000/sets/65d14d4ecfa8a505dadbfc77
 content-type: application/json
 
 {
@@ -35,24 +35,22 @@ content-type: application/json
 }
 
 ###
-DELETE http://localhost:3000/sets/:id
+DELETE http://localhost:3000/sets/65d14d4ecfa8a505dadbfc77
 
 
 // Render PUT and DELETE for Builders
 
 ###
-PUT https://lastclassprojecttwo.onrender.com/builders/:id
+PUT https://lastclassprojecttwo.onrender.com/builders/65d1316cd2b82462c5865cd8
 content-type: application/json
 
 {
-    "setNumber": 10305,
-    "setName": "Lion Knights' Castle",
-    "theme": "LEGO Icons",
-    "pieces": 4514,
-    "ages": "18+",
-    "price": 399.99,
-    "availability": "Available now",
-    "image": "https://www.lego.com/cdn/cs/set/assets/blt0254ea3dce736ea0/10305.png?format=webply&fit=bounds&quality=75&width=800&height=800&dpr=1"
+  "firstName": "Mario",
+  "lastName": "Correa",
+  "email": "mario_c4@gmail.com",
+  "favoriteTheme": "Technic",
+  "setsOwned": [42162, 42141, 75572, 60367],
+  "wishList": [10300, 42096]
 }
 
 ###

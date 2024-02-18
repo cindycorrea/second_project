@@ -80,12 +80,13 @@ const updateBuilder = async (request, response) => {
       return response.status(404).json("Builder not found.");
     }
 
-    response.status(204);
+    response.status(204).send();
+    console.log("Finished.");
   } catch (error) {
     console.error("Here is the error: ", error);
 
     // Check if error is a Mongoose validation error
-    if (error.name === "ValidationError" || "CastError") {
+    if (error.name === "ValidationError" || error.name === "CastError") {
       // Handle validation error separately
       return response.status(400).json(error.message); // Respond with 400 Bad Request
     }
@@ -114,6 +115,13 @@ const deleteBuilder = async (request, response) => {
     response.status(200).json(`Builder ${result.firstName} has been deleted.`);
   } catch (error) {
     console.error("Error: ", error);
+
+    // Check if error is a Mongoose validation error
+    if (error.name === "ValidationError" || error.name === "CastError") {
+      // Handle validation error separately
+      return response.status(400).json(error.message); // Respond with 400 Bad Request
+    }
+
     response.status(500).json({ error: "Internal Server Error" });
   }
 };

@@ -75,17 +75,17 @@ const updateSet = async (request, response) => {
       runValidators: true,
     });
 
-    if (!result) {
-      // If result is null, document with given setID does not exist
-      return response.status(404).json("Set not found.");
-    }
+    // if (!result) {
+    //   // If result is null, document with given setID does not exist
+    //   return response.status(404).json("Set not found.");
+    // }
 
-    response.status(204);
+    response.status(204).send();
   } catch (error) {
     console.error("Here is the error: ", error);
 
     // Check if error is a Mongoose validation error
-    if (error.name === "ValidationError" || "CastError") {
+    if (error.name === "ValidationError" || error.name === "CastError") {
       // Handle validation error separately
       return response.status(400).json(error.message); // Respond with 400 Bad Request
     }
@@ -112,6 +112,13 @@ const deleteSet = async (request, response) => {
     response.status(200).json(`Set ${result._id} successfully deleted.`);
   } catch (error) {
     console.error("Here is the error: ", error);
+
+    // Check if error is a Mongoose validation error
+    if (error.name === "ValidationError" || error.name === "CastError") {
+      // Handle validation error separately
+      return response.status(400).json(error.message); // Respond with 400 Bad Request
+    }
+
     response.status(500).json("Could not delete the set.");
   }
 };
