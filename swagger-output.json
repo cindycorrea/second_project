@@ -1,14 +1,14 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "My API",
-    "description": "Description",
+    "title": "LEGO Builders",
+    "description": "LEGO sets and Builders",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "lastclassprojecttwo.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/builders": {
