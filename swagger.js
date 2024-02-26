@@ -2,11 +2,11 @@ const swaggerAutogen = require('swagger-autogen')();
 
 const doc = {
   info: {
-    title: 'My API',
-    description: 'Description'
+    title: 'LEGO Builders',
+    description: 'LEGO sets and Builders'
   },
-  host: 'localhost:3000',
-  schemes: ['http']
+  host: 'lastclassprojecttwo.onrender.com',
+  schemes: ['https']
 };
 
 const outputFile = './swagger-output.json';
